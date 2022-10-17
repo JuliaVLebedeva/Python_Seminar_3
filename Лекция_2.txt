@@ -1,0 +1,130 @@
+Файлы Как работать с файлами: Связать файловую переменную с файлом, 
+определив модификатор работы 
+a – add открытие для добавления данных 
+r – read открытие для чтения данных 
+w – write открытие для записи данных w+, r+
+
+Файлы 
+with open('file.txt', 'w') as data:    
+      data.write('line 1\n')    
+      data.write('line 2\n') 
+
+colors = ['red', 'green', 'blue'] 
+data = open('file.txt', 'a')    # открытие для добавления данных; также можно менять на r или w
+# data.writelines(colors)      # разделителей не будет # записть некоторые данные writelines(в качестве аргумента передаем набор данных)
+data.write('\nLINE 2\n')
+data.close()                         # разорвать подключение/закрыть связь с файлом на диске, во избежание утечек памяти
+
+**exit() - это закрывает следующий код, не позволяя выполняться
+path = 'file.txt' 
+data = open(path, 'r') 
+for line in data:      
+      print(line) 
+data.close()
+
+Функции 
+Это фрагмент программы, используемый многократно 
+def function_name(x): 
+# body line 1 
+# . . . 
+# body line n    
+# optional return  
+
+например:
+import hello
+print(hello.f(1))
+..................
+или
+..................
+import hello as h
+print(h.f(1))
+
+
+Функции.
+def new_string(symbol, count = 3):    
+    return symbol * count 
+
+print(new_string('!', 5))   # !!!!! 
+print(new_string('!'))      # TypeError missing 1 required ...
+print(new_string(4))        # 12 перемножение 3 * 4// count * new_string(4)
+
+def concatenatio(*params):    
+    res: str = ""    
+    for item in params:        
+          res += item    
+    return res 
+
+print(concatenatio('a', 's', 'd', 'w'))  # asdw 
+print(concatenatio('a', '1', 'd', '2'))  # a1d2 
+# print(conatenatio(1, 2, 3, 4)) # TypeError: ...
+
+Рекурсия.
+def fib(n):    
+       if n in [1, 2]:        
+          return 1    
+       else:        
+          return fib(n-1) + fib(n-2) 
+
+list = [] 
+for e in range(1, 10):    
+       list.append(fib(e)) 
+print(list) # 1 1 2 3 5 8 13 21 34
+
+
+
+Кортежи 
+Кортеж – это неизменяемый “список”
+t = () 
+print(type(t))  # tuple 
+
+t = (1,) 
+print(type(t))  # tuple 
+
+t = (1) 
+print(type(t))  # int 
+
+t = (28, 9, 1990) 
+print(type(t))  # tuple 
+
+colors = ['red', 'green', 'blue'] 
+print(colors)   # ['red', 'green', 'blue'] 
+
+t = tuple(colors) 
+print(t)        # ('red', 'green', 'blue') 
+................................................
+
+t = tuple(['red', 'green', 'blue']) 
+red, green, blue = t 
+print('r:{} g:{} b:{}'.format(red, green, blue)) 
+# r:red g:green b:blue
+................................................
+
+Словари.
+Неупорядоченные коллекции произвольных объектов с доступом по ключу
+dictionary = {} 
+dictionary = \    
+    {        
+        'up': '↑',        
+        'left': '←',        
+        'down': '↓',       
+        'right': '→'    
+     } 
+print(dictionary)  # {'up':'↑', 'left':'←', 'down':'↓', 'right':'→'} 
+print(dictionary['left'])  # ← 
+# типы ключей могут отличаться
+
+
+..............................................
+
+Множества Неупорядоченная совокупность элементов 
+a = {1, 2, 3, 5, 8} 
+b = {'2', '5', 8, 13, 21} 
+print(type(a))  # set 
+print(type(b))  # set
+
+
+Множества 
+Неизменяемое множество
+a = {1, 2, 3, 5, 8} 
+b = frozenset(a) 
+print(b) # frozenset({1, 2, 3, 5, 8}) 
